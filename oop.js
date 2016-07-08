@@ -1,10 +1,13 @@
-var user = { //creare obiect
-document.getElementById("demo").innerHTML = person.askName();
-    name: "Guest",
-    askName: function() {  // creare metoda
-       return this.name + " ";
-    },
-    sayHi: function() {
-        alert('Hi, my name is '+this.name)
+//JavaScript //
+var myObject = { //creare obiect
+    property1: "Alert",
+	property2: "Popup",
+    method: function() {  // creare metoda
+       return myObject.property1 + " "+ myObject.property2+ " ";  //returnare proprietati de pe obiect
     }
-}
+};
+
+document.getElementById("click").innerHTML=myObject.method(); 
+
+alert (myObject.property1);
+alert(myObject.property2);
