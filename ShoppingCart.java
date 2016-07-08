@@ -1,7 +1,7 @@
 package com.ecommerce.cart;
 
 import java.util.ArrayList;
-
+import java.util.List;
 import java.util.Scanner;
 import java.util.Scanner;
 
@@ -9,26 +9,26 @@ import java.util.Scanner;
  * Shopping Cart page.
  * 
  * Functionalities:
- *  1) add the products to the cart and calculate the totalprice of the order 
+ * 
+ *  1) add the products to the cart and calculate the totalprice  of the order
  *  2) increase the size for the capacity of the order
+ *  3) remove the product from the shopping cart
  *
  */
 
 public class ShoppingCart {
 
-	/** Counter for the number of products */
-	private int productCount;
 	/** Total price of the order */
 	private double totalPrice;
 
 	/** The number of products from cart */
 	private static int amountOfItems;
 
-	private static Item[] cart = new Item[amountOfItems];
+	private static List<Item> cart = new ArrayList<Item>();
 
 	/**
 	 * 
-	 * Adds a product to the ShoppingCart product list.
+	 * Add a product to the ShoppingCart product list.
 	 * 
 	 * @param productID
 	 * @param productName
@@ -41,32 +41,33 @@ public class ShoppingCart {
 		totalPrice += (productPrice * productQuantity);
 		System.out.println("\n" + "The total price of the order " + totalPrice);
 
-		cart[productCount] = item;
-		productCount += 1;
-		if (productCount == amountOfItems) {
-			increaseSize(amountOfItems);
-			System.out.println("\n" + "The amount of items " + amountOfItems);
-		}
-	}
-
-
-	private void increaseSize(int amountOfItems) {
-		Item[] item = new Item[amountOfItems + 3];
-		for (int i = 0; i < amountOfItems; i++) {
-			item[i] = cart[i];
-		}
-		cart = item;
-		item = null;
-		amountOfItems = cart.length;
+		cart.add(item);
+		amountOfItems = cart.size();
 		System.out.println("\n" + "The amount of items " + amountOfItems);
-	}
 
-	public int getProductCount() {
-		return productCount;
 	}
+	
+	/**
+	 * 
+	 * Remove a product to the ShoppingCart product list 
+	 * 
+	 * @param productName
+	 */
 
-	public void setProductCount(int productCount) {
-		this.productCount = productCount;
+	public static void remove(String productName) {
+
+		for (int i = 0; i < amountOfItems; i++) {
+			System.out.println("\n" + "The amount of items " + amountOfItems);
+			Item remove = (Item) cart.get(i);
+
+			if (productName.equals(remove.getName())) {
+				System.out.println("\n" + "The product name " + productName);
+				cart.remove(i);
+				amountOfItems = cart.size();
+				System.out.println("\n" + "The amount of items " + amountOfItems);
+			}
+		}
+
 	}
 
 	public double getTotalPrice() {
@@ -77,19 +78,15 @@ public class ShoppingCart {
 		this.totalPrice = totalPrice;
 	}
 
-	public static int getCapacity() {
+	public static int getAmountOfItems() {
 		return amountOfItems;
 	}
 
-	public static void setCapacity(int capacity) {
-		ShoppingCart.amountOfItems = capacity;
+	public static void setAmountOfItems(int amountOfItems) {
+		ShoppingCart.amountOfItems = amountOfItems;
 	}
 
-	public static Item[] getCart() {
-		return cart;
-	}
-
-	public static void setCart(Item[] cart) {
+	public static void setCart(List<Item> cart) {
 		ShoppingCart.cart = cart;
 	}
 
