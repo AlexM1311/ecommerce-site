@@ -1,15 +1,31 @@
 package com.ecommerce.cart;
 
+/**
+ * Item page.
+ * 
+	 * 
+	 * @param productID
+	 * @param productName
+	 * @param productPrice
+	 * @product productQuantity
+ *
+ */
 public class Item {
-	
+
+	/** Product id. */
+
 	private int id;
-	
+
+	/** Product name. */
+
 	private String name;
 	
+	 /** Product price. */
+
 	private double price;
 	
-	private String description;
-	
+	/** Product quantity */
+
 	private int quantity;
 
 	public int getId() {
@@ -36,14 +52,6 @@ public class Item {
 		this.price = price;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public int getQuantity() {
 		return quantity;
 	}
@@ -52,6 +60,21 @@ public class Item {
 		this.quantity = quantity;
 	}
 	
+	/**
 	
+	 * Item page.
+	 * @param productID
+	 * @param productName
+	 * @param productPrice
+	 * @product productQuantity
+	  */
+	
+	public Item (int productID, String productName, double productPrice, int productQuantity){
+	    id = productID;
+	    name = productName;
+	    price = productPrice;
+	    quantity = productQuantity;
+	
+	}
 
 }
